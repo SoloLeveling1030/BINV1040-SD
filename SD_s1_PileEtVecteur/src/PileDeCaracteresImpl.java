@@ -35,24 +35,38 @@ public class PileDeCaracteresImpl implements PileDeCaracteres{
 		return nombreCaracteres == 0;
 	}
 
-	
+
 	public void push(char c){
-		// TODO
-		// PENSEZ A CONSULTER LA JAVADOC (cfr Interface PileDeCaracteres)
+		if (nombreCaracteres == table.length) {
+			char[] tableTemp = new char[table.length * 2];
+
+			for (int i = 0; i < table.length; i++) {
+				tableTemp[i] = table[i];
+			}
+			table = tableTemp;
+		}
+
+		table[nombreCaracteres] = c;
+		nombreCaracteres++;
 	}
 
 
 	public char pop() throws PileVideException{
-		return ' ';		
-		// TODO
-		// PENSEZ A CONSULTER LA JAVADOC (cfr Interface PileDeCaracteres)
+		if (nombreCaracteres == 0)
+			throw new PileVideException();
+
+		char caractere = table[nombreCaracteres - 1];
+		nombreCaracteres --;
+
+		return caractere;
 	}
 
 
 	public char sommet()throws PileVideException{
-		return ' ';
-		// TODO
-		// PENSEZ A CONSULTER LA JAVADOC (cfr Interface PileDeCaracteres)
+		if (nombreCaracteres == 0)
+			throw new PileVideException();
+
+		return table[nombreCaracteres - 1];
 	}
 
 } 
