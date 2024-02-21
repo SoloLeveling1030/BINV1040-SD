@@ -56,18 +56,36 @@ public class FileImplChainee<E> implements File<E>{
 	
 	public void enfile(E element){
 		//TODO
+		Noeud nouveauNoeud = new Noeud(element,queue);
+		if (queue == null){
+			tete = nouveauNoeud;
+		}else {
+			queue.suivant = nouveauNoeud;
+		}
+		queue = nouveauNoeud;
+		taille++;
 	}
 
 	
 	public E defile() throws FileVideException{
 		//TODO
-		return null;
+		if (this.estVide())throw new FileVideException();
+			E element = tete.element;
+			taille--;
+		if (queue == null){
+			tete = null;
+		}else {
+			tete = tete.suivant;
+		}
+		return element;
 	}
 
 	
 	public E premier()throws FileVideException{
 		//TODO
-		return null;
+		if (this.estVide()) throw new FileVideException();
+		E element = tete.element;
+		return element;
 	}
 
 	// classe interne

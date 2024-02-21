@@ -16,7 +16,9 @@ public class Patrouille {
 			throw new IllegalArgumentException();
 		if(CP == null || CP.length()==0)
 			throw new IllegalArgumentException();
-	
+		this.nomPatrouille = nomPatrouille;
+		this.tete = new Noeud(CP);
+		this.nombreScouts = 1;
 		// TODO
 	}
 	
@@ -35,6 +37,10 @@ public class Patrouille {
 			throw new IllegalArgumentException();
 
 		// TODO
+		Noeud nouveauNoeud = new Noeud(scout);
+		nouveauNoeud.suivant = tete.suivant;
+		tete.suivant = nouveauNoeud;
+		nombreScouts++;
 	}
 	
 

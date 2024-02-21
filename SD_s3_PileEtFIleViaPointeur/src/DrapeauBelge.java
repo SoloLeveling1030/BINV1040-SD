@@ -10,6 +10,13 @@ public class DrapeauBelge {
 	 */
 	public DrapeauBelge() {
 		//TODO
+		premierNoir = new NoeudCouleur('n');
+		dernierJaune = new NoeudCouleur('j');
+		NoeudCouleur rouge = new NoeudCouleur('r');
+
+		premierNoir.suivant = dernierJaune;
+		dernierJaune.suivant = rouge;
+		rouge.suivant = null;
 
 	}
 
@@ -21,7 +28,20 @@ public class DrapeauBelge {
 	 */
 	public void ajouter(char couleur){
 		// TODO
-
+			NoeudCouleur nouveauNoeud = new NoeudCouleur(couleur);
+		if (couleur != 'n'&& couleur != 'j'&& couleur != 'r')throw new IllegalArgumentException();
+		if (couleur == 'n'){
+			nouveauNoeud.suivant = premierNoir;
+			premierNoir = nouveauNoeud;
+		}
+		if(couleur == 'j'){
+			nouveauNoeud.suivant = dernierJaune.suivant;
+			dernierJaune.suivant = nouveauNoeud;
+			dernierJaune = nouveauNoeud;
+		}if (couleur == 'r'){
+			nouveauNoeud.suivant = dernierJaune.suivant;
+			dernierJaune.suivant = nouveauNoeud;
+		}
 	}
 
 	// A NE PAS MODIFIER. VA SERVIR POUR LES TESTS

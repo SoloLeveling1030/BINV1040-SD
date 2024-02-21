@@ -52,7 +52,6 @@ public class PileImplChainee<E> implements Pile<E>{
 	
 	public void push(E element) {
 		//TODO
-		if (element == null)throw new PileVideException();
 		Noeud nouveauNoeud = new Noeud(element ,sommet);
 		nouveauNoeud.suivant = sommet;
 		sommet = nouveauNoeud;
