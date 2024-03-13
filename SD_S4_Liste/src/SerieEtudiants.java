@@ -12,6 +12,9 @@ public class SerieEtudiants {
 	 */
 	public SerieEtudiants(int numero) {
 		// TODO
+		if (numero < 1) throw new IllegalArgumentException();
+		listeEtudiants = new LinkedList<>();
+		this.numeroSerie = numero;
 	}
 
 	/**
@@ -20,7 +23,7 @@ public class SerieEtudiants {
 	 */
 	public int getNumeroSerie(){
 		// TODO
-		return 0;
+		return numeroSerie;
 	}
 	
 	/**
@@ -29,7 +32,7 @@ public class SerieEtudiants {
 	 */
 	public int nombreEtudiants(){
 		// TODO
-		return 0;
+		return listeEtudiants.size();
 	}
 	
 
@@ -41,7 +44,9 @@ public class SerieEtudiants {
 	 */
 	public boolean contientEtudiant(String nom){
 		// TODO
-		return false;
+		if (nom == null || nom.equals(""))throw new IllegalArgumentException();
+
+		return listeEtudiants.contains(nom);
 	}
 	
 	
@@ -55,6 +60,9 @@ public class SerieEtudiants {
 	 */
 	public void ajouterEtudiant(String nom){
 		// TODO
+		if (nom == null || nom.equals(""))throw new IllegalArgumentException();
+		listeEtudiants.addFirst(nom);
+
 	}
 
 	
@@ -66,11 +74,16 @@ public class SerieEtudiants {
 	 */
 	public boolean supprimerEtudiant(String nom){
 		// TODO
+		if (nom == null || nom.equals(""))throw new IllegalArgumentException();
+		if (!listeEtudiants.contains(nom)) {
+			listeEtudiants.remove(nom);
+			return true;
+		}
 		return false;
 	}
 
 	public String toString(){
-		return "serie n°"+numeroSerie+" "+listeEtudiants.toString();
+		return "serie n?"+numeroSerie+" "+listeEtudiants.toString();
 	}
 
 }
